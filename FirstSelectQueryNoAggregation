@@ -3,3 +3,25 @@ FROM marflights, airlines, airline_info, passenger_flights
 WHERE marflights.AIRLINE = airlines.IATA_CODE
 AND airline_info.IATA_CODE = airlines.IATA_CODE 
 AND marflights.FLIGHT_NUMBER = passenger_flights.FLIGHT_NUMBER;
+
+
+# Let us see what is the average price of plane tickets for passengers in the month of march when it is during the weekday. 
+SELECT avg(passenger_flights.PRICE) 
+FROM marflights, passenger_flights, dim_date #choose relevant tables
+WHERE marflights.flight_date_key = dim_date.date_key # make sure to get all dimensional dates that link with our 
+# march flights. 
+AND dim_date.weekday_weekend = 'Weekday' # Now select only for march flights where dimensional table says
+# is during the weekday. 
+AND marflights.FLIGHT_NUMBER = passenger_flights.FLIGHT_NUMBER;
+
+
+# Let us see what is the average price of plane tickets for customers in March during the weekend. 
+
+
+SELECT avg(passenger_flights.PRICE) 
+FROM marflights, passenger_flights, dim_date # choose relevant tables
+WHERE marflights.flight_date_key = dim_date.date_key # make sure to get all dimensional dates that link with our 
+# march flights. 
+AND dim_date.weekday_weekend = 'Weekend' # Now select only for march flights where dimensional table says
+# is during the weekend. 
+AND marflights.FLIGHT_NUMBER = passenger_flights.FLIGHT_NUMBER; # get a link between march flights and flight number. 

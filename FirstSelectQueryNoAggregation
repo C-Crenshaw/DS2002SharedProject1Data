@@ -1,0 +1,5 @@
+SELECT airline_info.NAME, marflights.AIR_TIME, passenger_flights.PRICE
+FROM marflights, airlines, airline_info, passenger_flights
+WHERE marflights.AIRLINE = airlines.IATA_CODE
+AND airline_info.IATA_CODE = airlines.IATA_CODE 
+AND marflights.FLIGHT_NUMBER = passenger_flights.FLIGHT_NUMBER;

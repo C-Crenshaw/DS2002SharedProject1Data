@@ -2,6 +2,9 @@
 # tables that have been created, thus linking all the information together. 
 # In order to join the marflights table with the date dimension information, make sure the safe updates preference is off.
 
+# Other data used to support the marflights table comes from a CSV file. 
+# CSV Referenced: marflights.csv
+
 CREATE TABLE `marflights` (
   `DATE` DATETIME NULL DEFAULT NULL,
   `AIRLINE` VARCHAR(1024),
